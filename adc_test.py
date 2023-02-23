@@ -4,6 +4,9 @@ import busio
 import adafruit_ads1x15.ads1115 as ADS
 from adafruit_ads1x15.analog_in import AnalogIn
 
+# Software offset to correct voltage
+# offset = 0.0015
+
 # Create I2C bus
 i2c = busio.I2C(board.SCL, board.SDA)
 
@@ -16,5 +19,5 @@ chan = AnalogIn(ads, ADS.P0)
 print("{:>5}\t{:>5}".format("raw", "v"))
 
 while True:
-    print("CHAN 0: "+"{:>5}\t{:>5.6f}".format(chan.value, chan.voltage))
+    print("CHAN 0: "+"{:>5.6f} V".format(chan.voltage))
     time.sleep(0.5)
