@@ -13,8 +13,6 @@ ads = ADS.ADS1115(i2c)
 # Create single-ended input on channel 0
 chan = AnalogIn(ads, ADS.P0)
 
-print("{:>5}\t{:>5}".format("raw", "v"))
-
 while True:
     print("CHAN 0: "+"{:>5.6f} V".format(chan.voltage))
     time.sleep(0.5)
