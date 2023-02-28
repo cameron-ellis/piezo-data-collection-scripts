@@ -13,9 +13,13 @@ i2c = busio.I2C(board.SCL, board.SDA)
 # Create the ADC object using the I2C bus
 ads = ADS.ADS1115(i2c)
 
-# Create single-ended input on channel 0
-chan = AnalogIn(ads, ADS.P0)
+# Create single-ended input on channel 0 for voltage measurement
+v_meas = AnalogIn(ads, ADS.P0)
+
+# Create single-ended input on channel 1 for current measurement
+i_meas = AnalogIn(ads, ADS.P1)
 
 while True:
-print("CHAN 0: "+"{:>5.6f} V".format(chan.voltage))
-time.sleep(0.5)
+    print("CHAN 0: "+"{:>5.6f} V".format(v_meas.voltage))
+    print("CHAN 1: "+"{:>5.6f} V".format(i_meas.voltage))
+    time.sleep(0.5)
