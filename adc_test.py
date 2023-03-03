@@ -7,6 +7,8 @@ import adafruit_ads1x15.ads1115 as ADS
 import adafruit_ssd1306
 from adafruit_ads1x15.analog_in import AnalogIn
 
+v_offset = 1
+
 # Create I2C bus
 i2c = busio.I2C(board.SCL, board.SDA)
 
@@ -20,6 +22,7 @@ v_meas = AnalogIn(ads, ADS.P0)
 i_meas = AnalogIn(ads, ADS.P1)
 
 while True:
-    print("CHAN 0: "+"{:>5.6f} V".format(v_meas.voltage))
-    print("CHAN 1: "+"{:>5.6f} V".format(i_meas.voltage))
+    # print("CHAN 0: "+"{:>5.6f} V".format(v_meas.voltage))
+    calc_current = i_meas.voltage - v_offset
+    print("CHAN 1: "+"{:>5.6f} V".format(calc_current))
     time.sleep(0.5)
