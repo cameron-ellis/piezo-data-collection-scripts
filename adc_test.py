@@ -1,4 +1,5 @@
 import time
+import display_test
 import board
 import busio
 import digitalio
@@ -7,6 +8,7 @@ import adafruit_ads1x15.ads1115 as ADS
 import adafruit_ssd1306
 from adafruit_ads1x15.analog_in import AnalogIn
 
+# Voltage offset for current measurement
 v_offset = 1
 
 # Create I2C bus
@@ -23,6 +25,7 @@ i_meas = AnalogIn(ads, ADS.P1)
 
 while True:
     # print("CHAN 0: "+"{:>5.6f} V".format(v_meas.voltage))
+    display_test.clear_screen()
     calc_current = i_meas.voltage - v_offset
-    print("CHAN 1: "+"{:>5.6f} V".format(calc_current))
+    display_test.IV_disp(v_meas.voltage, calc_current)
     time.sleep(0.5)
