@@ -82,3 +82,30 @@ def IV_disp(v_meas, i_meas):
     # Display image
     oled.image(image)
     oled.show()
+
+
+def exit_disp():
+    # Clear Display
+    oled.fill(0)
+    oled.show()
+
+    # Create blank image for drawing.
+    # Make sure to create image with mode '1' for 1-bit color.
+    image = Image.new("1", (oled.width, oled.height))
+
+    # Get drawing object to draw on image.
+    draw = ImageDraw.Draw(image)
+
+    # Load default font.
+    font = ImageFont.load_default()
+    # Display values for
+    exit_msg = "Exit Measurement Read"
+    draw.text(
+        (32, 32),
+        exit_msg,
+        font=font,
+        fill=255,
+    )
+    # Display image
+    oled.image(image)
+    oled.show()

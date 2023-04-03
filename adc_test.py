@@ -26,10 +26,13 @@ i_meas = AnalogIn(ads, ADS.P1)
 while True:
     try:
         display_test.clear_screen()
-        calc_current = i_meas.voltage - v_offset
-        display_test.IV_disp(v_meas.voltage, calc_current)
+        current = i_meas.voltage - v_offset
+        display_test.IV_disp(v_meas.voltage, current)
         time.sleep(0.5)
     except KeyboardInterrupt:
         display_test.clear_screen()
-        print("Exit\n")
+        display_test.exit_disp()
+        time.sleep(5)
+        display_test.clear_screen()
+        print('\nExit\n')
         break
