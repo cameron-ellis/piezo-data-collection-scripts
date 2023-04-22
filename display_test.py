@@ -66,15 +66,15 @@ def IV_disp(v_meas, i_meas):
     font = ImageFont.load_default()
     # Display values for
     voltage = "V: "+"{:>5.6f} V".format(v_meas)
-    current = "I: "+"{:>5.6f} A".format(i_meas)
+    current = "I: "+"{:>5.6f} nA".format(i_meas)
     draw.text(
-        (15, 20),
+        (15, 25),
         voltage,
         font=font,
         fill=255,
     )
     draw.text(
-        (15, 35),
+        (15, 40),
         current,
         font=font,
         fill=255,
@@ -99,9 +99,9 @@ def exit_disp():
     # Load default font.
     font = ImageFont.load_default()
     # Display values for
-    exit_msg = "Exit Measurement Read"
+    exit_msg = "Exit"
     draw.text(
-        (32, 32),
+        (50, 32),
         exit_msg,
         font=font,
         fill=255,
