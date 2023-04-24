@@ -8,10 +8,10 @@ import adafruit_ads1x15.ads1115 as ADS
 import adafruit_ssd1306
 from adafruit_ads1x15.analog_in import AnalogIn
 
-# Constant for 100 picofarad capacitor in current measurement
-pico_farad = (100*(10**(-12)))
-ns_to_sec = (10**(-9))
-a_to_na = (10**9)
+# Constants for conversion
+pico_farad = (100*(10**(-12)))  # constant for 100 pF capacitor
+ns_to_sec = (10**(-9))  # constant for nanoseconds to seconds
+a_to_na = (10**9)  # constant for amps to nanoamps
 
 # Create I2C bus
 i2c = busio.I2C(board.SCL, board.SDA)
@@ -21,9 +21,6 @@ ads = ADS.ADS1115(i2c)
 
 # Create single-ended input on channel 0 for voltage measurement
 v_meas = AnalogIn(ads, ADS.P0)
-
-# Create single-ended input on channel 1 for current measurement
-#i_meas = AnalogIn(ads, ADS.P1)
 
 
 def voltage_read():

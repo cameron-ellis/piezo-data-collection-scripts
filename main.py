@@ -23,7 +23,7 @@ while True:
             prev_vmeas, curr_vmeas, prev_time, curr_time)
         display_test.IV_disp(curr_vmeas, curr_imeas)
         prev_vmeas = curr_vmeas
-        prev_time = time.time_ns()
+        prev_time = curr_time
         time.sleep(0.5)
     except KeyboardInterrupt:
         display_test.clear_screen()
